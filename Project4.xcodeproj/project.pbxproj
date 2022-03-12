@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		F58E083F27D57BB30029AD54 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F58E083E27D57BB30029AD54 /* main.cpp */; };
+		F58E084827D5805B0029AD54 /* PersonProfile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F58E084627D5805B0029AD54 /* PersonProfile.cpp */; };
+		F58E084B27D581EC0029AD54 /* AttributeTranslator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F58E084927D581EC0029AD54 /* AttributeTranslator.cpp */; };
+		F58E084E27D583BF0029AD54 /* MemberDatabase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F58E084C27D583BF0029AD54 /* MemberDatabase.cpp */; };
+		F58E085127D586130029AD54 /* MatchMaker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F58E084F27D586130029AD54 /* MatchMaker.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +29,20 @@
 /* Begin PBXFileReference section */
 		F58E083B27D57BB30029AD54 /* Project4 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Project4; sourceTree = BUILT_PRODUCTS_DIR; };
 		F58E083E27D57BB30029AD54 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		F58E084527D57EBE0029AD54 /* provided.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = provided.h; sourceTree = "<group>"; };
+		F58E084627D5805B0029AD54 /* PersonProfile.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PersonProfile.cpp; sourceTree = "<group>"; };
+		F58E084727D5805B0029AD54 /* PersonProfile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PersonProfile.h; sourceTree = "<group>"; };
+		F58E084927D581EC0029AD54 /* AttributeTranslator.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = AttributeTranslator.cpp; sourceTree = "<group>"; };
+		F58E084A27D581EC0029AD54 /* AttributeTranslator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AttributeTranslator.h; sourceTree = "<group>"; };
+		F58E084C27D583BF0029AD54 /* MemberDatabase.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MemberDatabase.cpp; sourceTree = "<group>"; };
+		F58E084D27D583BF0029AD54 /* MemberDatabase.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MemberDatabase.h; sourceTree = "<group>"; };
+		F58E084F27D586130029AD54 /* MatchMaker.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MatchMaker.cpp; sourceTree = "<group>"; };
+		F58E085027D586130029AD54 /* MatchMaker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MatchMaker.h; sourceTree = "<group>"; };
+		F58E085227D589680029AD54 /* RadixTree.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RadixTree.h; sourceTree = "<group>"; };
+		F58E085327D59CAC0029AD54 /* members.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = members.txt; sourceTree = "<group>"; };
+		F58E085427D59CB30029AD54 /* translator.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = translator.txt; sourceTree = "<group>"; };
+		F58E087027D71CF40029AD54 /* members_1.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = members_1.txt; sourceTree = "<group>"; };
+		F58E087127D71CF40029AD54 /* translator_1.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = translator_1.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,7 +75,21 @@
 		F58E083D27D57BB30029AD54 /* Project4 */ = {
 			isa = PBXGroup;
 			children = (
+				F58E084627D5805B0029AD54 /* PersonProfile.cpp */,
+				F58E084727D5805B0029AD54 /* PersonProfile.h */,
+				F58E084927D581EC0029AD54 /* AttributeTranslator.cpp */,
+				F58E084A27D581EC0029AD54 /* AttributeTranslator.h */,
+				F58E084C27D583BF0029AD54 /* MemberDatabase.cpp */,
+				F58E084D27D583BF0029AD54 /* MemberDatabase.h */,
+				F58E084F27D586130029AD54 /* MatchMaker.cpp */,
+				F58E085027D586130029AD54 /* MatchMaker.h */,
+				F58E085227D589680029AD54 /* RadixTree.h */,
 				F58E083E27D57BB30029AD54 /* main.cpp */,
+				F58E084527D57EBE0029AD54 /* provided.h */,
+				F58E085327D59CAC0029AD54 /* members.txt */,
+				F58E085427D59CB30029AD54 /* translator.txt */,
+				F58E087027D71CF40029AD54 /* members_1.txt */,
+				F58E087127D71CF40029AD54 /* translator_1.txt */,
 			);
 			path = Project4;
 			sourceTree = "<group>";
@@ -119,6 +151,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F58E084E27D583BF0029AD54 /* MemberDatabase.cpp in Sources */,
+				F58E084B27D581EC0029AD54 /* AttributeTranslator.cpp in Sources */,
+				F58E085127D586130029AD54 /* MatchMaker.cpp in Sources */,
+				F58E084827D5805B0029AD54 /* PersonProfile.cpp in Sources */,
 				F58E083F27D57BB30029AD54 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
