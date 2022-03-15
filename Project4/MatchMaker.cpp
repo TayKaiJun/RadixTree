@@ -9,6 +9,7 @@
 #include <map>
 #include <set>
 #include <iostream>
+#include <algorithm>
 using namespace std;
 
 MatchMaker::MatchMaker(const MemberDatabase& mdb, const AttributeTranslator& at){
@@ -67,7 +68,7 @@ std::vector<EmailCount> MatchMaker::IdentifyRankedMatches(std::string email, int
         }
     }
     
-    sort(output.begin(), output.end(), isGreaterThan);
+    std::sort(output.begin(), output.end(), isGreaterThan);
     
     return output;
 }
