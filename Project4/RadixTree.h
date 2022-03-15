@@ -61,7 +61,7 @@ void RadixTree<ValueType>::cleanup_tree(Node* cur){
             continue;
         cleanup_tree(cur->children[i]);
     }
-//    delete cur;
+    delete cur;
     
 }
 
@@ -122,8 +122,6 @@ void RadixTree<ValueType>::insert_childNode(std::string prefix, const ValueType 
             branch->key_prefix = remainder;
             branch->leaf_value = cur->leaf_value;
             branch->children = vector<Node*>(cur->children);
-//            ValueType temp = cur->leaf_value;
-//            cur->leaf_value = 0;
             if(cur->isword){
                 branch->isword = true;
                 cur->isword = false;
@@ -131,7 +129,6 @@ void RadixTree<ValueType>::insert_childNode(std::string prefix, const ValueType 
             for(int i = 0; i < VECTOR_SIZE; i++)
                 cur->children[i] = nullptr;
             cur->children[remainder[0]-OFFSET] = branch;
-//            insert_childNode(remainder, temp, cur->children[remainder[0]-OFFSET]); //this should carry over the old vector of arrays.
             std::string newPrefix = prefix.substr(matchingPos);
             insert_childNode(newPrefix, value, cur->children[newPrefix[0]-OFFSET]);
         }
@@ -139,22 +136,6 @@ void RadixTree<ValueType>::insert_childNode(std::string prefix, const ValueType 
 
 
 }
-
-//template <typename ValueType>
-//void RadixTree<ValueType>::print() const{
-//    print(root);
-//}
-//
-//template <typename ValueType>
-//void RadixTree<ValueType>::print(Node* cur) const{
-//    if(cur == nullptr)
-//        return;
-//    if(cur != root)
-//        std::cerr << cur->key_prefix << "(is word: " << cur->isword << ")"<< std::endl;
-//    for(int i = 0; i < VECTOR_SIZE; i++){
-//        print(cur->children[i]);
-//    }
-//}
 
 template <typename ValueType>
 ValueType* RadixTree<ValueType>::search(std::string key) const{
@@ -177,9 +158,12 @@ ValueType* RadixTree<ValueType>::search_from(std::string key, Node* cur) const{
     if(matchingPos == key.length()){
         return cur->isword ? &(cur->leaf_value) : nullptr;
     }
-
-    std::string remainder = key.substr(matchingPos);
-    return search_from(remainder, cur->children[remainder[0]-OFFSET]);
+    
+    if(matchingPos == cur->key_prefix.length()){
+        std::string remainder = key.substr(matchingPos);
+        return search_from(remainder, cur->children[remainder[0]-OFFSET]);
+    }
+    else return nullptr;
 }
 
 #endif /* RadixTree_h */

@@ -16,19 +16,18 @@ MemberDatabase::MemberDatabase(){
 }
 
 MemberDatabase::~MemberDatabase(){
-    cerr << "DELETING: MDB" << endl;
+//    cerr << "DELETING: MDB" << endl;
     
-//    for(int i = 0; i < emails.size(); i++){
-//        PersonProfile* temp = *(map_Email_to_Members->search(emails[i]));
-//        if(temp != nullptr)
-//            delete temp;
-////        cerr << temp << endl;
-//    }
-//    
-//    if(map_Email_to_Members != nullptr)
-//        delete map_Email_to_Members;
-//    if(map_AttValPair_to_Email != nullptr)
-//        delete map_AttValPair_to_Email;
+    for(int i = 0; i < emails.size(); i++){
+        PersonProfile* temp = *(map_Email_to_Members->search(emails[i]));
+        if(temp != nullptr)
+            delete temp;
+    }
+    
+    if(map_Email_to_Members != nullptr)
+        delete map_Email_to_Members;
+    if(map_AttValPair_to_Email != nullptr)
+        delete map_AttValPair_to_Email;
 }
 
 bool MemberDatabase::LoadDatabase(std::string filename){
@@ -66,7 +65,10 @@ bool MemberDatabase::LoadDatabase(std::string filename){
                     map_AttValPair_to_Email->search(attValPair_key)->insert(email);
                 }
             }
-            map_Email_to_Members->insert(email,pp);
+            if(map_Email_to_Members->search(email) == nullptr)
+                map_Email_to_Members->insert(email,pp);
+            else
+                return false;
         }
     }
 //    map_Email_to_Members.print();
@@ -74,7 +76,7 @@ bool MemberDatabase::LoadDatabase(std::string filename){
     return true;
 }
 
-PersonProfile* MemberDatabase::GetMemberByEmail(std::string email) const{
+const PersonProfile* MemberDatabase::GetMemberByEmail(std::string email) const{
     if(map_Email_to_Members->search(email) == nullptr)
         return nullptr;
     else

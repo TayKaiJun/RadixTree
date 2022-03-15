@@ -11,11 +11,15 @@
 #include <iostream>
 using namespace std;
 
-MatchMaker::MatchMaker(const MemberDatabase& mdb, const AttributeTranslator& at)
-    : mdb(mdb) , at(at) {}
+MatchMaker::MatchMaker(const MemberDatabase& mdb, const AttributeTranslator& at){
+//    mm_mdb = new MemberDatabase(mdb);
+//    mm_at = new AttributeTranslator(at);
+    mm_mdb = &mdb;
+    mm_at = &at;
+}
 
 MatchMaker::~MatchMaker(){
-    cerr << "DELETING: MATCHMAKER" << endl;
+//    cerr << "DELETING: MATCHMAKER" << endl;
 }
 
 bool isGreaterThan(EmailCount e1, EmailCount e2){
@@ -33,7 +37,7 @@ bool isGreaterThan(EmailCount e1, EmailCount e2){
 }
 
 std::vector<EmailCount> MatchMaker::IdentifyRankedMatches(std::string email, int threshold) const{
-    PersonProfile* pp = mdb.GetMemberByEmail(email);
+    const PersonProfile* pp = mm_mdb->GetMemberByEmail(email);
     std::vector<EmailCount> output;
     
     map<string,set<string>> email_histogram;
@@ -41,9 +45,9 @@ std::vector<EmailCount> MatchMaker::IdentifyRankedMatches(std::string email, int
         AttValPair attValPair;
         if(!pp->GetAttVal(i, attValPair))
             break;
-        vector<AttValPair> attVal_result = at.FindCompatibleAttValPairs(attValPair);
+        vector<AttValPair> attVal_result = mm_at->FindCompatibleAttValPairs(attValPair);
         for(int j = 0; j < attVal_result.size(); j++){
-            vector<string> email_result = mdb.FindMatchingMembers(attVal_result[j]);
+            vector<string> email_result = mm_mdb->FindMatchingMembers(attVal_result[j]);
             for(int k = 0; k < email_result.size() ; k++){
                 if(email_result[k] == email)
                     continue;

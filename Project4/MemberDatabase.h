@@ -21,7 +21,7 @@ public:
     ~MemberDatabase();
     bool LoadDatabase(std::string filename);
     std::vector<std::string> FindMatchingMembers(const AttValPair& input) const;
-    PersonProfile* GetMemberByEmail(std::string email) const;
+    const PersonProfile* GetMemberByEmail(std::string email) const;
 
 private:
     std::vector<std::string> emails; //to be deleted later??

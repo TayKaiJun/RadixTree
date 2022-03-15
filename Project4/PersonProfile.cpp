@@ -4,7 +4,6 @@
 //
 //  Created by Kai Jun Tay on 6/3/22.
 //
-
 #include "PersonProfile.h"
 #include <iostream>
 
@@ -16,7 +15,6 @@ PersonProfile::~PersonProfile(){
 }
 
 std::string PersonProfile::GetName() const {
-//    std::cerr<<p_name<<std::endl;
     return p_name;
 };
 

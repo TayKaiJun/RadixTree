@@ -15,9 +15,9 @@ AttributeTranslator::AttributeTranslator(){
 }
 
 AttributeTranslator::~AttributeTranslator(){
-    cerr << "DELETING: ATTRIBUTE TRANS" << endl;
-//    if(map_sourceAtt_to_compatabileAtt != nullptr)
-//        delete map_sourceAtt_to_compatabileAtt;
+//    cerr << "DELETING: ATTRIBUTE TRANS" << endl;
+    if(map_sourceAtt_to_compatabileAtt != nullptr)
+        delete map_sourceAtt_to_compatabileAtt;
 }
 
 bool AttributeTranslator::Load(std::string filename){
@@ -62,15 +62,9 @@ bool AttributeTranslator::Load(std::string filename){
                 entry = new vector<AttValPair>;
                 entry->push_back(AttValPair(compAtt,compVal));
                 map_sourceAtt_to_compatabileAtt->insert(sourceAttVal, *entry);
-//                cerr << "NEW KEY: " << sourceAttVal << " First val: " << compAtt << "/" << compVal << endl;
             }
             else{
                 entry->push_back(AttValPair(compAtt,compVal));
-//                for(int i = 0; i < entry->size(); i++){
-//                    AttValPair temp = (*entry)[i];
-//                    cerr << i << ") key: " << sourceAttVal << " val: " << temp.attribute << "/" << temp.value << endl;
-//                }
-//                cerr << endl;
             }
         }
     }
